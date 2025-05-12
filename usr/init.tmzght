@@ -1,0 +1,38 @@
+#include "stdlib.tmzght"
+
+fun main () : unit {
+    d := open("/bin");
+    bins := list_dir(d);
+    close(d);
+
+    for bin in bins {
+        print_endline(bin);
+    }
+
+    i := 0;
+    n := len(bins);
+    while (1) {
+        k := key_wait();
+        if k == UP {
+            i = i - 1;
+            if i < 0 {
+                i = n - 1;
+            }
+            print_string("> ");
+            print_endline(bins[i]);
+        } else {
+            if k == DOWN {
+                i = i + 1;
+                if i >= n {
+                    i = 0;
+                }
+                print_string("> ");
+                print_endline(bins[i]);
+            } else {
+                if k == OK {
+                    exec(bins[i]);
+                }
+           }
+        }
+    }
+}
