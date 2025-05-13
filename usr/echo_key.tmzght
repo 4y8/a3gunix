@@ -1,0 +1,7 @@
+#include "stdlib.tmzght"
+
+fun main () : unit {
+    while 1 {
+        print_key(key_wait());
+    }
+}

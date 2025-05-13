@@ -1,9 +1,9 @@
 #include "stdlib.tmzght"
 
 fun main () : unit {
-    d := open("/bin");
+    d := open_dir("/bin");
     bins := list_dir(d);
-    close(d);
+    close_dir(d);
 
     for bin in bins {
         print_endline(bin);
@@ -13,26 +13,22 @@ fun main () : unit {
     n := len(bins);
     while (1) {
         k := key_wait();
-        if k == UP {
+        if k == KEY_UP {
             i = i - 1;
             if i < 0 {
                 i = n - 1;
             }
             print_string("> ");
             print_endline(bins[i]);
-        } else {
-            if k == DOWN {
-                i = i + 1;
-                if i >= n {
-                    i = 0;
-                }
-                print_string("> ");
-                print_endline(bins[i]);
-            } else {
-                if k == OK {
-                    exec(bins[i]);
-                }
-           }
+        } elif k == KEY_DOWN {
+            i = i + 1;
+            if i >= n {
+                i = 0;
+            }
+            print_string("> ");
+            print_endline(bins[i]);
+        } elif k == KEY_SELECT {
+            exec(bins[i]);
         }
     }
 }

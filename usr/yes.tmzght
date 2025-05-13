@@ -1,0 +1,5 @@
+fun main () : unit {
+    while 1 {
+        print_endline("yes");
+    }
+}

@@ -1,0 +1,34 @@
+#define KEY_UP 5
+#define KEY_DOWN 4
+#define KEY_SELECT 1
+#define KEY_RIGHT 2
+#define KEY_LEFT 3
+
+fun print_char(c : int) : unit {
+    a := array_int(1);
+    a[0] = c;
+    print_string(a);
+}
+
+fun print_newline () : unit {
+    print_char('\n');
+}
+
+fun print_endline (s : [int]) : unit {
+    print_string(s);
+    print_newline();
+}
+
+fun print_key (key : int) {
+    if key == KEY_SELECT {
+        print_string("select")
+    } elif key == KEY_RIGHT {
+        print_string("right")
+    } elif key == KEY_LEFT {
+        print_string("left")
+    } elif key == KEY_UP {
+        print_string("up")
+    } elif key == KEY_DOWN {
+        print_string("down")
+    }
+}
