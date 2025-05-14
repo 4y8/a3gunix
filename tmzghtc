@@ -1,0 +1,7 @@
+#!/bin/sh
+cpp -I lib "$1" > tmp
+./tamazight.exe tmp > tmp.c
+gcc tmp.c
+./a.out
+mv out "${1%%.tmzght}"
+rm tmp tmp.c

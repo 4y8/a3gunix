@@ -1,0 +1,58 @@
+#include "stdlib.tmzght"
+
+fun display (d : [int]) : int {
+    i := "a";
+
+    while 1 {
+        clear_screen();
+        f := open_file(d ++ i);
+        print_string(read_file(f));
+        close_file(f);
+
+        key := key_wait();
+        if key == KEY_SELECT {
+            return 0;
+        } elif key == KEY_RIGHT {
+            if i[0] < 'z' {
+                i[0] = i[0] + 1;
+            }
+        } elif key == KEY_LEFT {
+            if i[0] > 'a' {
+                i[0] = i[0] - 1;
+            }
+        }
+    }
+}
+
+fun main () : unit {
+    d := open_dir("/docs/prez");
+    prezs := list_dir(d);
+    close_dir(d);
+
+    for prez in prezs {
+        print_endline(prez);
+    }
+
+    i := 0;
+    n := len(prezs);
+    while (1) {
+        k := key_wait();
+        if k == KEY_UP {
+            i = i - 1;
+            if i < 0 {
+                i = n - 1;
+            }
+            print_string("> ");
+            print_endline(prezs[i]);
+        } elif k == KEY_DOWN {
+            i = i + 1;
+            if i >= n {
+                i = 0;
+            }
+            print_string("> ");
+            print_endline(prezs[i]);
+        } elif k == KEY_SELECT {
+            display("/docs/prez" ++ prezs[i]);
+        }
+    }
+}

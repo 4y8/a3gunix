@@ -1,6 +1,11 @@
 #include "stdlib.tmzght"
 
 fun main () : unit {
+    f := open_file("/greetings");
+    print_endline(read_file(f));
+    close_file(f);
+    print_newline();
+
     d := open_dir("/bin");
     bins := list_dir(d);
     close_dir(d);
@@ -28,7 +33,8 @@ fun main () : unit {
             print_string("> ");
             print_endline(bins[i]);
         } elif k == KEY_SELECT {
-            exec(bins[i]);
+            clear_screen();
+            exec("/bin/" ++ bins[i]);
         }
     }
 }

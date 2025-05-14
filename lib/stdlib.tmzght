@@ -19,16 +19,16 @@ fun print_endline (s : [int]) : unit {
     print_newline();
 }
 
-fun print_key (key : int) {
+fun print_key (key : int) : unit {
     if key == KEY_SELECT {
-        print_string("select")
+        print_endline("select");
     } elif key == KEY_RIGHT {
-        print_string("right")
+        print_endline("right");
     } elif key == KEY_LEFT {
-        print_string("left")
+        print_endline("left");
     } elif key == KEY_UP {
-        print_string("up")
+        print_endline("up");
     } elif key == KEY_DOWN {
-        print_string("down")
+        print_endline("down");
     }
 }
