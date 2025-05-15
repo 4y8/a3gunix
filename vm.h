@@ -1,10 +1,7 @@
 #ifndef __VM_H
 #define __VM_H
 
-#include "../libc/u.h"
-
-int mlc_printf(const char *fmt, ...);
-u32 malloc(u32);
+#define NFILES_MAX 10
 
 enum op {
 	OP_RET,
@@ -16,13 +13,16 @@ enum op {
 	OP_CJMP, OP_JMP,
 	OP_ASETI, OP_AGETI, OP_AALLOC, OP_ALEN,
 	OP_CALL,
-	OP_SYS
+	OP_SYS, OP_AAPPEND
 };
 
 enum syscall {
-	SYS_OPEN, SYS_CLOSE, SYS_READF, SYS_READD, SYS_TYPE,
+	SYS_OPEN, SYS_CLOSE, SYS_READF,
+	SYS_OPEND, SYS_CLOSED, SYS_LISTD,
+	SYS_TYPE,
 	SYS_PUTS, SYS_KEYW,
-	SYS_EXEC
+	SYS_EXEC,
+	SYS_CLS, SYS_PWROFF
 };
 
 struct instruction {
@@ -33,6 +33,7 @@ struct instruction {
 struct vm {
 	struct instruction *code;
 	struct instruction **funs;
+	void **files;
 	i32 regs[256];
 	u32 pc;
 };
