@@ -1,24 +1,24 @@
 #include "stdlib.tmzght"
 
 fun display (d : [int]) : int {
-    i := "a";
+    i := "/a";
 
     while 1 {
         clear_screen();
         f := open_file(d ++ i);
-        print_string(read_file(f));
+        print_endline(read_file(f));
         close_file(f);
 
         key := key_wait();
         if key == KEY_SELECT {
             return 0;
         } elif key == KEY_RIGHT {
-            if i[0] < 'z' {
-                i[0] = i[0] + 1;
+            if i[1] < 'z' {
+                i[1] = i[1] + 1;
             }
         } elif key == KEY_LEFT {
-            if i[0] > 'a' {
-                i[0] = i[0] - 1;
+            if i[1] > 'a' {
+                i[1] = i[1] - 1;
             }
         }
     }
@@ -52,7 +52,7 @@ fun main () : unit {
             print_string("> ");
             print_endline(prezs[i]);
         } elif k == KEY_SELECT {
-            display("/docs/prez" ++ prezs[i]);
+            display("/docs/prez/" ++ prezs[i]);
         }
     }
 }

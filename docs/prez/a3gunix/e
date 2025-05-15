@@ -1,0 +1,13 @@
+III - Problemes et solutions
+----------------------------
++ pas de vraie allocation memoire
+  + ecrire un allocateur (et un glaneur
+    de cellule)
+
++ lenteur
+  + acceleration de la vm (par
+    computed goto, voire JIT)
+
++ pas de processi
+  + facilement ajoutable grace a
+    l'architecture

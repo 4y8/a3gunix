@@ -1,0 +1,10 @@
+I - Architecture generale
+------------------------
++ bootloader deja disponible
+  + construction par modification
+
++ construction autour d'une machine
+  virtuelle
+  + Uxn/Varvara
+  + Inferno
+  + Android

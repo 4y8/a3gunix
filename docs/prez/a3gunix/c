@@ -1,0 +1,9 @@
+I - Architecture generale
+-------------------------
++ avantages
+  + surete logicielle
+  + portabilite
+
++ desavantages
+  + performances
+  + manque de controle bas niveau
