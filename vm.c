@@ -332,13 +332,15 @@ vm_run(struct vm *vm)
 			break;
 		case OP_ASETI: {
 			i32 *p = (i32 *)(load(vm, i.dst));
-			p[1 + load(vm, i.src1)] = load(vm, i.src2);
+			if (load(vm, i.src1) < p[0])
+				p[1 + load(vm, i.src1)] = load(vm, i.src2);
 			++vm->pc;
 			break;
 		}
 		case OP_AGETI: {
 			i32 *p = (i32 *)(load(vm, i.src1));
-			store(vm, i.dst, p[1 + load(vm, i.src2)]);
+			if (load(vm, i.src2) < p[0])
+				store(vm, i.dst, p[1 + load(vm, i.src2)]);
 			++vm->pc;
 			break;
 		}
